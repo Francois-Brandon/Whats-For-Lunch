@@ -4,9 +4,6 @@ var app = express();
 const yelp = require('yelp-fusion');
 const client = yelp.client(process.env.API_KEY);
 
-var bodyParser = require('body-parser');
-var jsonParser = bodyParser.json()
-
 const { Pool } = require("pg");
 
 const connectionString = process.env.DATABASE_URL;
@@ -15,13 +12,14 @@ const pool = new Pool({connectionString: connectionString});
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
+app.use(express.json())
 
 app.get('/restaurant', function(request, response) {
 	getRestaurants(request, response);
 });
 
-app.post('/favorite', jsonParser, function(request, response) {
-    if (!request.body) return res.sendStatus(400);
+app.post('/favorite', function(request, response) {
+    if (!request.body) return response.sendStatus(400);
     response.status(200).json(request.body);
 });
 
