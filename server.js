@@ -24,15 +24,15 @@ app.listen(app.get('port'), function() {
 });
 
 function getRestaurants(req, res) {
-    var searchlocation = request.query.location;
-    var radius = request.query.radius;
-    var categories = request.query.categories;
+    var searchlocation = req.query.location;
+    var radius = req.query.radius;
+    var categories = req.query.categories;
     
     client.search({
         term:'restaurants',
         location: req.query.location,
-        radius: request.query.radius,
-        categories: request.query.categories
+        radius: req.query.radius,
+        categories: req.query.categories
     }).then(response => {
         console.log(response.jsonBody.businesses[0].name);
         res.status(200).json(response.jsonBody.businesses[0].name);
