@@ -2,8 +2,10 @@ var express = require('express');
 var app = express();
 
 const yelp = require('yelp-fusion');
- 
 const client = yelp.client(process.env.API_KEY);
+
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json()
 
 const { Pool } = require("pg");
 
@@ -18,10 +20,16 @@ app.get('/restaurant', function(request, response) {
 	getRestaurants(request, response);
 });
 
+app.post('/favorite', jsonParser, function(request, response) {
+    if (!request.body) return res.sendStatus(400);
+    response.status(200).json(request.body);
+});
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
 
 function getRestaurants(req, res) {
     var searchlocation = req.query.location;
