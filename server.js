@@ -65,11 +65,11 @@ function addFavorite(req, res) {
 function addFavoriteToDb(businessId, userId, callback) {
     var sql = "INSERT INTO favorites (user_id, restaurant_id) VALUES ($1::int, $2)";
 
-	var params = [businessId, userId];
+	var params = [userId, businessId];
 
 	pool.query(sql, params, function(err, result) {
 		if (err) {
-			console.log("Error in query: ")
+			console.log("Error in query: " + sql)
 			console.log(err);
 			callback(err, null);
 		}
