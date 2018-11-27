@@ -74,7 +74,7 @@ function addFavoriteToDb(businessId, userId, callback) {
 			callback(err, null);
 		}
 
-		console.log("Added favorite restaurant: " + businessId));
+		console.log("Added favorite restaurant: " + businessId);
 
 		callback(null);
 	});
