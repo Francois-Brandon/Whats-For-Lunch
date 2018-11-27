@@ -64,7 +64,7 @@ function getFavorites(req, res) {
         if (error) {
 			res.status(500).json({success: false, data: error});
 		} else {
-			res.status(200).json(result);
+			res.status(200).json(result.rows);
 		}
     });
 }
