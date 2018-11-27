@@ -50,8 +50,8 @@ function getRestaurants(req, res) {
         radius: req.query.radius,
         categories: req.query.categories
     }).then(response => {
-        console.log(response.jsonBody.businesses[0].name);
-        res.status(200).json(response.jsonBody.businesses[0].name);
+        console.log(response.jsonBody.businesses);
+        res.status(200).json(response.jsonBody.businesses);
     }).catch(e => {
         console.log(e);
     });
