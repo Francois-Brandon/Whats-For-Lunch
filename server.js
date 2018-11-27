@@ -58,7 +58,7 @@ function getRestaurants(req, res) {
 }
 
 function getFavorites(req, res) {
-    var userId = req.body.userId;
+    var userId = req.query.userId;
     
     getFavoritesFromDb(userId, function(error, result) {
         if (error) {
