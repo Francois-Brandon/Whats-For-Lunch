@@ -56,7 +56,7 @@ function addFavorite(req, res) {
         if (error) {
 			res.status(500).json({success: false, data: error});
 		} else {
-			res.status(200);
+			res.status(200).json({success: true, data: result});
 		}
     });
 }
@@ -74,8 +74,8 @@ function addFavoriteToDb(businessId, userId, callback) {
 		}
 
 		console.log("Added favorite restaurant: " + businessId);
-
-		callback(null);
+        result = "Added favorite restaurant" + businessId;
+		callback(null, result);
 	});
 }
 
