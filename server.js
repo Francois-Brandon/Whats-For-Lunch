@@ -20,7 +20,8 @@ app.get('/restaurant', function(request, response) {
 
 app.post('/favorite', function(request, response) {
     if (!request.body) return response.sendStatus(400);
-    response.status(200).json(request.body);
+    addFavorite(request, response);
+    //response.status(200).json(request.body);
 });
 
 
@@ -46,3 +47,39 @@ function getRestaurants(req, res) {
         console.log(e);
     });
 }
+
+function addFavorite(req, res) {
+    var businessId = req.body[0].businessId;
+    var userId = req.body[0].userId;
+    
+    addFavoriteToDb(businessId, userId, function(error, result) {
+        if (error || result == null || result.length != 1) {
+			response.status(500).json({success: false, data: error});
+		} else {
+			var person = result[0];
+			response.status(200).json({"responseText": "Added to favorites"});
+		}
+    });
+}
+
+function addFavoriteToDb(businessId, userId, callback) {
+    var sql = "INSERT INTO favorites (user_id, restaurant_id) VALUES ($1::int, $2)";
+
+	var params = [businessId, userId];
+
+	pool.query(sql, params, function(err, result) {
+		if (err) {
+			console.log("Error in query: ")
+			console.log(err);
+			callback(err, null);
+		}
+
+		console.log("Found result: " + JSON.stringify(result.rows));
+
+		callback(null);
+	});
+}
+
+
+
+
