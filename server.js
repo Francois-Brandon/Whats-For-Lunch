@@ -53,7 +53,7 @@ function addFavorite(req, res) {
     var userId = req.body.userId;
     
     addFavoriteToDb(businessId, userId, function(error, result) {
-        if (error || result == null || result.length != 1) {
+        if (error) {
 			response.status(500).json({success: false, data: error});
 		} else {
 			var person = result[0];
@@ -74,7 +74,7 @@ function addFavoriteToDb(businessId, userId, callback) {
 			callback(err, null);
 		}
 
-		console.log("Found result: " + JSON.stringify(result.rows));
+		console.log("Added favorite restaurant: " + businessId));
 
 		callback(null);
 	});
