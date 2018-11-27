@@ -54,9 +54,9 @@ function addFavorite(req, res) {
     
     addFavoriteToDb(businessId, userId, function(error, result) {
         if (error) {
-			response.status(500).json({success: false, data: error});
+			res.status(500).json({success: false, data: error});
 		} else {
-			response.status(200);
+			res.status(200);
 		}
     });
 }
