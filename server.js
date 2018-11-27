@@ -14,20 +14,23 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 app.use(express.json())
 
-app.get('/restaurant', function(request, response) {
+
+app.get('/restaurants', function(request, response) {
 	getRestaurants(request, response);
 });
 
-app.post('/favorite', function(request, response) {
-    if (!request.body) return response.sendStatus(400);
-    addFavorite(request, response);
-    //response.status(200).json(request.body);
+app.get('/favorites', function(request, response) {
+	getFavorites(request, response);
 });
 
-app.post('/favorite/delete', function(request, response) {
+app.post('/favorites/add', function(request, response) {
+    if (!request.body) return response.sendStatus(400);
+    addFavorite(request, response);
+});
+
+app.post('/favorites/delete', function(request, response) {
     if (!request.body) return response.sendStatus(400);
     deleteFavorite(request, response);
-    //response.status(200).json(request.body);
 });
 
 
@@ -52,6 +55,35 @@ function getRestaurants(req, res) {
     }).catch(e => {
         console.log(e);
     });
+}
+
+function getFavorites(req, res) {
+    var userId = req.body.userId;
+    
+    getFavoritesFromDb(userId, function(error, result) {
+        if (error) {
+			res.status(500).json({success: false, data: error});
+		} else {
+			res.status(200).json(result);
+		}
+    });
+}
+
+function getFavoritesFromDb(userId, callback) {
+    var sql = "SELECT restaurant_id FROM favorites WHERE user_id = $1::int";
+
+	var params = [userId];
+
+	pool.query(sql, params, function(err, result) {
+		if (err) {
+			console.log("Error in query: " + sql)
+			console.log(err);
+			callback(err, null);
+		}
+
+		console.log("Favorites Retrieved");
+		callback(null, result);
+	});
 }
 
 function addFavorite(req, res) {
