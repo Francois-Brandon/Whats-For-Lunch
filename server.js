@@ -24,6 +24,12 @@ app.post('/favorite', function(request, response) {
     //response.status(200).json(request.body);
 });
 
+app.post('/favorite/delete', function(request, response) {
+    if (!request.body) return response.sendStatus(400);
+    deleteFavorite(request, response);
+    //response.status(200).json(request.body);
+});
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
@@ -56,7 +62,7 @@ function addFavorite(req, res) {
         if (error) {
 			res.status(500).json({success: false, data: error});
 		} else {
-			res.status(200).json({success: true, data: result});
+			res.status(201).json({success: true, data: result});
 		}
     });
 }
@@ -74,11 +80,41 @@ function addFavoriteToDb(businessId, userId, callback) {
 		}
 
 		console.log("Added favorite restaurant: " + businessId);
-        result = "Added favorite restaurant" + businessId;
+        result = "Added favorite restaurant: " + businessId;
 		callback(null, result);
 	});
 }
 
+function deleteFavorite(req, res) {
+    var favId = req.body.favId;
+    var userId = req.body.userId;
+    
+    removeFavoriteFromDb(favId, userId, function(error, result) {
+        if (error) {
+			res.status(500).json({success: false, data: error});
+		} else {
+			res.status(200).json({success: true, data: result});
+		}
+    });
+}
+
+function removeFavoriteFromDb(favId, userId, callback) {
+    var sql = "DELETE FROM favorites WHERE id = $2::int AND user_id = $1::int";
+
+	var params = [userId, favId];
+
+	pool.query(sql, params, function(err, result) {
+		if (err) {
+			console.log("Error in query: " + sql)
+			console.log(err);
+			callback(err, null);
+		}
+
+		console.log("Favorite Removed");
+        result = "Removed favorite restaurant";
+		callback(null, result);
+	});
+}
 
 
 
