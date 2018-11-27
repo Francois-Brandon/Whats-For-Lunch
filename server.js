@@ -46,6 +46,7 @@ function getRestaurants(req, res) {
     
     client.search({
         term:'restaurants',
+        limit: 20,
         location: req.query.location,
         radius: req.query.radius,
         categories: req.query.categories
