@@ -49,8 +49,8 @@ function getRestaurants(req, res) {
 }
 
 function addFavorite(req, res) {
-    var businessId = req.body[0].businessId;
-    var userId = req.body[0].userId;
+    var businessId = req.body.businessId;
+    var userId = req.body.userId;
     
     addFavoriteToDb(businessId, userId, function(error, result) {
         if (error || result == null || result.length != 1) {
