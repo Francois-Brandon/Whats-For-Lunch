@@ -9,7 +9,7 @@ function getRestaurants(req, res) {
         if (error) {
             res.status(500).json({success: false, data: error});
 		} else {
-			res.status(200).json({success: true, data: result});
+			res.status(200).json({success: true, data: results});
 		}
     }); 
 }
