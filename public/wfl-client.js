@@ -7,8 +7,8 @@ function restaurantSearch() {
         console.log(data);
         var parsedData = JSON.parse(data);
         console.log(parsedData);
-        $("#ulScriptures").append("<li>" + parsedData[0].name + "</li>");
-        $("#ulScriptures").append("<li>" + parsedData[1].name + "</li>");
-        $("#ulScriptures").append("<li>" + parsedData[2].name + "</li>");
+        $("#ulScriptures").append("<li>" + parsedData.data.businesses[0].name + "</li>");
+        $("#ulScriptures").append("<li>" + parsedData.data.businesses[1].name + "</li>");
+        $("#ulScriptures").append("<li>" + parsedData.data.businesses[2].name + "</li>");
     });
 }
