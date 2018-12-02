@@ -5,8 +5,8 @@ function restaurantSearch() {
     
     $.get("/restaurants", {location:location, radius:radius,categories:categories}, function(data) {
 
-        $("#ulScriptures").append("<li>" + data.businesses[0].name + "</li>");
-        $("#ulScriptures").append("<li>" + data.businesses[1].name + "</li>");
-        $("#ulScriptures").append("<li>" + data.businesses[2].name + "</li>");
+        $("#ulRestaurants").append("<li>" + data.businesses[0].name + "</li>");
+        $("#ulRestaurants").append("<li>" + data.businesses[1].name + "</li>");
+        $("#ulRestaurants").append("<li>" + data.businesses[2].name + "</li>");
     });
 }
