@@ -4,8 +4,25 @@
     <title>What's For Lunch</title>
     <meta charset="utf-8">   
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="wfl-client.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
+    <h1>What's For Lunch</h1>
+    <h3>Search for restaurants</h3>
+    <label for="location">Location: </label>
+    <input type="text" name="location" id="location" placeholder="Zipcode, City, etc..."><br>
+    <label for="radius">Search Radius(in meters for now)</label>
+    <input type="text" name="radius" id="radius" placeholder="ex. 10000"><br>
+    <label for="categories">Cravings: </label>
+    <input type="text" name="categories" id="categories" placeholder="Pizza,Sushi,Hamburgers"><br>
+    <input type="submit" name="restaurantsearch" value="Search" onclick="restaurantSearch()">
+    
+    <div>
+        <h3>Results</h3>
+        <ul id="ulRestaurants">
+        </ul>
+    </div>
     
 </body>
 </html>
