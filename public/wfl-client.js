@@ -3,7 +3,7 @@ function restaurantSearch() {
     var radius = $("#radius").val();
     var categories = $("#categories").val();
     
-    $.get("/restaurants",{location:location, radius:radius,categories:categories} function(data) {
+    $.get("/restaurants",{location:location, radius:radius,categories:categories}, function(data) {
         
         var parsedData = JSON.parse(data);
         $("#ulScriptures").append("<li>" + parsedData[0].name + "</li>");
