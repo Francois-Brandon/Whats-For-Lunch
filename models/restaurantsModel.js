@@ -18,6 +18,6 @@ function getRestaurantsFromYelp(searchlocation, radius, categories, callback) {
     
 }
 
-export modules = {
+module.exports = {
     getRestaurantsFromYelp: getRestaurantsFromYelp
 };
