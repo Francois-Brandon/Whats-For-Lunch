@@ -4,7 +4,7 @@ function restaurantSearch() {
     var categories = $("#categories").val();
     
     $.get("/restaurants", {location:location, radius:radius,categories:categories}, function(data) {
-        
+        console.log(data);
         var parsedData = JSON.parse(data);
         console.log(parsedData);
         $("#ulScriptures").append("<li>" + parsedData[0].name + "</li>");
