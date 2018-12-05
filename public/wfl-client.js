@@ -18,7 +18,7 @@ function restaurantSearch() {
     
     $("#results-section").remove();
         
-    var resultsHeader = "<div class=\"section\" id=\"results-section\" data-aos=\"fade-up\"><div class=\"container\" id=\"search-container\"><div class=\"row section-heading justify-content-center mb-5\"><div class=\"col-md-8 text-center\"><h2 class=\"heading mb-3\" id=\"section-results\">Results</h2><p class=\"sub-heading mb-5\">Select multiple restuarants and let us narrow down the options</p></div></div></div></div>"
+    var resultsHeader = "<div class=\"section\" id=\"results-section\" data-aos=\"fade-up\"><div class=\"container\" id=\"results-container\"><div class=\"row section-heading justify-content-center mb-5\"><div class=\"col-md-8 text-center\"><h2 class=\"heading mb-3\" id=\"section-results\">Results</h2><p class=\"sub-heading mb-5\">Select multiple restuarants and let us narrow down the options</p></div></div></div></div>"
         
     $("#search-form-section").after(resultsHeader);
     
