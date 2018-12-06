@@ -30,6 +30,10 @@ function restaurantSearch() {
         $("#results-container").append(resultsBody);
         
     });
+    
+    $('html,body').animate({
+    scrollTop: $("#results-section").offset().top - 50
+    });
 }
 
 
