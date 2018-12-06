@@ -1,20 +1,22 @@
-function restaurantSearch1() {
-    var location = $("#location").val();
-    var radius = $("#radius").val();
-    var categories = $("#categories").val();
-    
-    $.get("/restaurants", {location:location, radius:radius,categories:categories}, function(data) {
 
-        $("#ulRestaurants").append("<li>" + data.businesses[0].name + "</li>");
-        $("#ulRestaurants").append("<li>" + data.businesses[1].name + "</li>");
-        $("#ulRestaurants").append("<li>" + data.businesses[2].name + "</li>");
-    });
-}
+var criteria = [];
 
 function restaurantSearch() {
-    //var location = $("#location").val();
-    //var radius = $("#radius").val();
-    //var categories = $("#categories").val();
+    var location = $("#location").val();
+    var radius = $("#radius").val();
+    var categories = '';
+    
+    $.each(criteria, function( index, value ) {
+        if (criteria.length > 1 && index != criteria.length - 1) {
+            categories += value + ",";
+        }
+        else {
+            categories += value;
+        }
+        console.log(categories);
+    });
+    
+    
     
     $("#results-section").remove();
         
@@ -35,6 +37,8 @@ function restaurantSearch() {
     });
 }
 
+
+
 function addSearchTerm() {
     var termtext = $("#searchterm").val();
 
@@ -44,6 +48,9 @@ function addSearchTerm() {
         $("#terms").append("<a onclick=\"removeSearchTerm(this)\" id=\"" + termtext + "\"><span><i class=\"icon ion-android-remove-circle\"></i>" + termtext + "</span></a>");
 
         $("#searchterm").val("");
+        
+        criteria.push(termtext);
+        //console.log(criteria);
     }
 }
 
@@ -52,8 +59,9 @@ function removeSearchTerm(ele) {
     var ch = ele.getAttribute("id");
     document.getElementById(ch).outerHTML = '';
     
-    //var index = criteria.indexOf(ch);
-    //if (index > -1) {
-    //    criteria.splice(index, 1);
-    //}  
+    var index = criteria.indexOf(ch);
+    if (index > -1) {
+        criteria.splice(index, 1);
+    }  
+    //console.log(criteria);
 }
