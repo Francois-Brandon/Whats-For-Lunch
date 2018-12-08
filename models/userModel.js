@@ -23,12 +23,12 @@ function addUserToDb(username, password, callback) {
             if (err) {
                 callback(err)
             }
-            result = "User: " + username + " has been created";
-		    callback(null, result);
+            
+		    next();
 
         });
 
-		//console.log("");
+		result = "User: " + username + " has been created";
 		callback(null, result);
 	});
     
