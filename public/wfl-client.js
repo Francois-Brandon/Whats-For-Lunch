@@ -8,10 +8,10 @@ function restaurantSearch() {
     
     $.each(criteria, function( index, value ) {
         if (criteria.length > 1 && index != criteria.length - 1) {
-            categories += value + ",";
+            categories += value.replace(/[^a-zA-Z-]/g, '').toLowerCase() + ",";
         }
         else {
-            categories += value;
+            categories += value.replace(/[^a-zA-Z-]/g, '').toLowerCase();
         }
     });
     

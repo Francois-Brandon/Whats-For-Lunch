@@ -3,6 +3,16 @@ var app = express();
 
 const favoritesController = require("./controllers/favoritesController");
 const restaurantsController = require("./controllers/restaurantsController");
+const userController = require("./controllers/userController");
+
+var session = require('express-session')
+
+// set up sessions
+app.use(session({
+  secret: 'my-super-secret-secret!',
+  resave: false,
+  saveUninitialized: true
+}))
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
@@ -13,6 +23,9 @@ app.get('/restaurants', restaurantsController.getRestaurants);
 app.get('/favorites', favoritesController.getFavorites);
 app.post('/favorites/add', favoritesController.addFavorite);
 app.post('/favorites/delete', favoritesController.deleteFavorite);
+app.post('/login', userController.handleLogin);
+app.post('/logout', userController.handleLogout);
+app.post('/user', userController.createUser);
 
 
 app.listen(app.get('port'), function() {
