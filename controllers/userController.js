@@ -4,6 +4,9 @@ function createUser(request, response) {
     var username = request.body.username;
     var password = request.body.password;
     
+    console.log("This is the username: " + username);
+    console.log("This is the password: " + password);
+    
     userModel.addUserToDb(username, password, function(error, result) {
         if (error) {
             response.status(400).json({success: false, data: error});
