@@ -3,7 +3,7 @@ var criteria = [];
 
 function restaurantSearch() {
     var location = $("#location").val();
-    var radius = $("#radius").val() / 1609.344;
+    var radius = $("#radius").val() * 1609.344;
     var categories = '';
     
     $.each(criteria, function( index, value ) {
