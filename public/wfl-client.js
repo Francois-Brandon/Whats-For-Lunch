@@ -70,7 +70,7 @@ function addToFavorites(businessId, businessName) {
     //businessName = escapeHtml(businessName);
     
     $.toast({
-        text: businessName + "added to favorites", // Text that is to be shown in the toast
+        text: businessName + " added to favorites", // Text that is to be shown in the toast
 
         icon: 'success', // Type of toast icon
         showHideTransition: 'fade', // fade, slide or plain
@@ -86,13 +86,10 @@ function addToFavorites(businessId, businessName) {
 }
 
 function escapeHtml(text) {
-  var map = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;'
-  };
-
-  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+  return text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
 }
