@@ -58,9 +58,19 @@ a:hover {
 }
 
 .rest-option:hover {
-    content: 'Add to restaurant pool';
-    background-color: #FFF;
-    opacity: .5;
+    content: 'ADD TO RESTAURANT POOL';
+    background-color: #ff7a5c;
+    opacity: .8;
+    position: absolute;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #FFF;
+    font-weight: bold;
 }
 
 h1, h2, h3, h4, h5 {
