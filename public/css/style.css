@@ -73,8 +73,20 @@ a:hover {
     font-weight: bold;
 }
 
-.rest-added {
-    background-color: #ff7a5c;
+.rest-added:hover:before {
+    content: 'REMOVE FROM RESTAURANT POOL';
+    background-color: #6fdc6f;
+    opacity: .8;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #FFF;
+    font-weight: bold;
 }
 
 .flex-lg-row {

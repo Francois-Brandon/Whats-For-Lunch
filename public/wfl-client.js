@@ -77,7 +77,7 @@ function addToPool(businessId) {
     var index = restPool.indexOf(businessId);
     if (index > -1) {
         restPool.splice(index, 1);
-        $("#" + businessId).addClass("rest-option");
+        $("#" + businessId).removeClass("rest-option");
     } else {
         restPool.push(businessId);
         $("#" + businessId).addClass("rest-added");
