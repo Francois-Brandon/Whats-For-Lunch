@@ -5,13 +5,7 @@ const favoritesController = require("./controllers/favoritesController");
 const restaurantsController = require("./controllers/restaurantsController");
 const userController = require("./controllers/userController");
 
-/*var session = require('express-session')
 
-app.use(session({
-  secret: 'my-super-secret-secret!',
-  resave: false,
-  saveUninitialized: true
-}))*/
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
