@@ -14,7 +14,7 @@ function getRestaurants(req, res) {
     }); 
 }
 
-function getRestaurants(req, res) {
+function getRestaurant(req, res) {
     var businessId = req.query.businessId;
     
     restaurantsModel.getRestaurantFromYelp(businessId, function(error, results) {
