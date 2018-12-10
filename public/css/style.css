@@ -57,7 +57,7 @@ a:hover {
     color: #ff7a5c;
 }
 
-.rest-option:hover {
+.rest-option:hover:before {
     content: 'ADD TO RESTAURANT POOL';
     background-color: #ff7a5c;
     opacity: .8;
