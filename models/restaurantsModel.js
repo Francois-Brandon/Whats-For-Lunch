@@ -18,6 +18,18 @@ function getRestaurantsFromYelp(searchlocation, radius, categories, callback) {
     
 }
 
+function getRestaurantFromYelp(businessId, callback) {
+    client.business(businessId).then(response => {
+        console.log(response.jsonBody);
+        callback(null, response.jsonBody);
+    }).catch(e => {
+        console.log(e);
+        callback(e);
+    });
+    
+}
+
 module.exports = {
-    getRestaurantsFromYelp: getRestaurantsFromYelp
+    getRestaurantsFromYelp: getRestaurantsFromYelp,
+    getRestaurantFromYelp: getRestaurantFromYelp
 };

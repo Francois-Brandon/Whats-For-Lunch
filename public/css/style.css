@@ -89,6 +89,10 @@ a:hover {
     font-weight: bold;
 }
 
+#pick-error {
+    color: red;
+}
+
 .flex-lg-row {
     justify-content: center;
 }

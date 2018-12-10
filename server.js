@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.get('/restaurants', restaurantsController.getRestaurants);
+app.get('/restaurant', restaurantsController.getRestaurant);
 app.get('/favorites', favoritesController.getFavorites);
 app.post('/favorites/add', favoritesController.addFavorite);
 app.post('/favorites/delete', favoritesController.deleteFavorite);
