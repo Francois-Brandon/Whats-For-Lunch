@@ -3,7 +3,7 @@ var criteria = [];
 
 function restaurantSearch() {
     var location = $("#location").val();
-    var radius = $("#radius").val();
+    var radius = $("#radius").val() / 1609.344;
     var categories = '';
     
     $.each(criteria, function( index, value ) {
@@ -31,10 +31,9 @@ function restaurantSearch() {
         var resultsBody = '<div class="row"><div class="ftco-46 results-display">';
         
         for (var i = 0; i < 6; i++) {
-            var name = escapeHtml(data.businesses[i].name);
             
             
-            resultsBody += '<div class="ftco-46-row d-flex flex-column flex-lg-row"><div class="ftco-46-image" style="background-image: url(' + data.businesses[i].image_url + ');"></div><div class="ftco-46-text ftco-46-arrow-left"><h3 class="ftco-46-heading">' + data.businesses[i].name + '</h3><p class="mb-5">' + data.businesses[i].location.address1 + '<br>'  + data.businesses[i].location.address2 + '<br>' + data.businesses[i].location.city + ', ' + data.businesses[i].location.state + ' ' + data.businesses[i].location.zip_code + '</p><p><a href="' + data.businesses[i].url + '" class="btn-link" target="_blank">See on Yelp <span class="ion-android-arrow-forward"></span></a></p><p class="btn-link" onclick="addToFavorites(\'' + data.businesses[i].id + ', \'' + name + '\')>Add to favorites <span class="ion-heart"></span></p></div></div>';
+            resultsBody += '<div class="ftco-46-row d-flex flex-column flex-lg-row"><div class="ftco-46-image" style="background-image: url(' + data.businesses[i].image_url + ');"></div><div class="ftco-46-text ftco-46-arrow-left"><h3 class="ftco-46-heading">' + data.businesses[i].name + '</h3><p class="mb-5">' + data.businesses[i].location.address1 + '<br>'  + data.businesses[i].location.address2 + '<br>' + data.businesses[i].location.city + ', ' + data.businesses[i].location.state + ' ' + data.businesses[i].location.zip_code + '</p><p><a href="' + data.businesses[i].url + '" class="btn-link" target="_blank">See on Yelp <span class="ion-android-arrow-forward"></span></a></p><p class="btn-link" onclick="addToFavorites(\'' + data.businesses[i].id + '\')>Add to favorites <span class="ion-heart"></span></p></div></div>';
         }
         
         resultsBody += '</div></div>';
@@ -77,11 +76,11 @@ function removeSearchTerm(ele) {
     //console.log(criteria);
 }
 
-function addToFavorites(businessId, businessName) {
+function addToFavorites(businessId) {
     //businessName = escapeHtml(businessName);
     
     $.toast({
-        text: businessName + " added to favorites", // Text that is to be shown in the toast
+        text: "Added to favorites", // Text that is to be shown in the toast
 
         icon: 'success', // Type of toast icon
         showHideTransition: 'fade', // fade, slide or plain
@@ -94,13 +93,4 @@ function addToFavorites(businessId, businessName) {
         loader: true,  // Whether to show loader or not. True by default
         loaderBg: '#FF7A5C',  // Background color of the toast loader
     });
-}
-
-function escapeHtml(text) {
-  return text
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
 }
