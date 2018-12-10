@@ -79,7 +79,7 @@ function addToPool(businessId) {
         restPool.splice(index, 1);
         $(this).addClass("rest-option");
     } else {
-        restPool.push(restinfo.innerHTML);
+        restPool.push(businessId);
         $(this).addClass("rest-added");
     }
     
