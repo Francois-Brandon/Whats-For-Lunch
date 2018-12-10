@@ -74,10 +74,6 @@ function removeSearchTerm(ele) {
 
 function addToPool(businessId) {
 
-    var rest = ele.getAttribute("id");
-    var restinfo = document.getElementById(rest);
-
-    
     var index = restPool.indexOf(businessId);
     if (index > -1) {
         restPool.splice(index, 1);
@@ -86,6 +82,8 @@ function addToPool(businessId) {
         restPool.push(restinfo.innerHTML);
         $(this).addClass("rest-added");
     }
+    
+    console.log(restPool);
 
 }
 
