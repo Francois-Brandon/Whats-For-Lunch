@@ -1,15 +1,5 @@
 const userModel = require("../models/userModel.js");
 
-// We are going to use sessions
-var session = require('express-session')
-
-// set up sessions
-app.use(session({
-  secret: 'my-super-secret-secret!',
-  resave: false,
-  saveUninitialized: true
-}))
-
 function createUser(request, response) {
     var username = request.body.username;
     var password = request.body.password;
