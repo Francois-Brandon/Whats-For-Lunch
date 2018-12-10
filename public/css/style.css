@@ -73,8 +73,13 @@ a:hover {
     font-weight: bold;
 }
 
+.rest-added {
+    background-color: #ff7a5c;
+}
+
 .flex-lg-row {
     justify-content: center;
+    color: #FFF;
 }
 
 h1, h2, h3, h4, h5 {
