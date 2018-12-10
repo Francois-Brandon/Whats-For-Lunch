@@ -20,7 +20,7 @@ function restaurantSearch() {
     
     $("#results-section").remove();
         
-    var resultsHeader = "<div class=\"section\" id=\"results-section\" data-aos=\"fade-up\"><div class=\"container\" id=\"results-container\"><div class=\"row section-heading justify-content-center mb-5\"><div class=\"col-md-8 text-center\"><h2 class=\"heading mb-3\" id=\"section-results\">Results</h2><p class=\"sub-heading mb-5\">Select multiple restuarants and let us narrow down the options</p></div></div></div></div>"
+    var resultsHeader = "<div class=\"section\" id=\"results-section\" data-aos=\"fade-up\"><div class=\"container\" id=\"results-container\"><div class=\"row section-heading justify-content-center mb-5\"><div class=\"col-md-8 text-center\"><h2 class=\"heading mb-3\" id=\"section-results\">Results</h2><p class=\"sub-heading mb-5\">Select multiple restuarants and let us narrow down the options. Press 'Pick Restaurant' when you are ready.</p><input type="button" id="pick-rest" onclick="pickRest()" value="Pick Restaurant"></div></div></div></div>"
         
     $("#search-form-section").after(resultsHeader);
     
@@ -56,12 +56,10 @@ function addSearchTerm() {
         $("#searchterm").val("");
         
         criteria.push(termtext);
-        //console.log(criteria);
     }
 }
 
 function removeSearchTerm(ele) {
-    //console.log(ele);
     var ch = ele.getAttribute("id");
     document.getElementById(ch).outerHTML = '';
     
@@ -69,7 +67,6 @@ function removeSearchTerm(ele) {
     if (index > -1) {
         criteria.splice(index, 1);
     }  
-    //console.log(criteria);
 }
 
 function addToPool(businessId) {
@@ -106,4 +103,8 @@ function addToFavorites(businessId) {
         loader: true,  // Whether to show loader or not. True by default
         loaderBg: '#FF7A5C',  // Background color of the toast loader
     });
+}
+
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
 }
