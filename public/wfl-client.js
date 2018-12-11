@@ -135,6 +135,10 @@ function pickRest() {
         $("#choice-container").append(resultsBody);
     
     });
+    
+    $('html,body').animate({
+    scrollTop: $("#choice-section").offset().top - 50
+    });
 }
 
 function getRndInteger(min, max) {
