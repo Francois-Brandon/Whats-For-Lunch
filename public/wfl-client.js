@@ -136,9 +136,8 @@ function pickRest() {
     
     });
     
-    $('html,body').animate({
-    scrollTop: $("#choice-section").offset().top
-    });
+    var scrollElement = document.getElementById("choice-container");
+    scrollElement.scrollIntoView({behavior: smooth});
 }
 
 function getRndInteger(min, max) {
