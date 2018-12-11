@@ -124,11 +124,11 @@ function pickRest() {
     
      $("#choice-section").remove();
     
+    var choiceHeader = '<div class="section" id="choice-section" data-aos="fade-up"><div class="container" id="choice-container"><div class="row section-heading justify-content-center mb-5"><div class="col-md-8 text-center"><h2 class="heading mb-3" id="section-results">Enjoy your meal at...</h2></div></div></div></div>';
+        
+    $("#results-section").after(choiceHeader);
+    
     $.get("/restaurant", {businessId:chosenRest}, function(data) {
-        
-        var choiceHeader = '<div class="section" id="choice-section" data-aos="fade-up"><div class="container" id="choice-container"><div class="row section-heading justify-content-center mb-5"><div class="col-md-8 text-center"><h2 class="heading mb-3" id="section-results">Enjoy your meal at...</h2></div></div></div></div>';
-        
-        $("#results-section").after(choiceHeader);
         
         var resultsBody = '<div class="row"><div class="ftco-46 results-display"><div class="ftco-46-row d-flex flex-column flex-lg-row"><div class="ftco-46-image" style="background-image: url(' + data.image_url + ');"></div><div class="ftco-46-text ftco-46-arrow-left"><h3 class="ftco-46-heading">' + data.name + '</h3><p class="mb-5">' + data.location.address1 + '<br>'  + data.location.address2 + '<br>' + data.location.city + ', ' + data.location.state + ' ' + data.location.zip_code + '</p><p class="btn-link" onclick="addToFavorites(\'' + data.id + '\')">Add to favorites <span class="ion-heart"></span></p><p><a href="' + data.url + '" class="btn-link" target="_blank">See on Yelp <span class="ion-android-arrow-forward"></span></a></p></div></div></div></div>';
         
@@ -136,8 +136,9 @@ function pickRest() {
     
     });
     
-    var scrollElement = document.getElementById("choice-container");
-    scrollElement.scrollIntoView({behavior: smooth});
+    $('html,body').animate({
+    scrollTop: $("#choice-section").offset().top - 50
+    });
 }
 
 function getRndInteger(min, max) {
