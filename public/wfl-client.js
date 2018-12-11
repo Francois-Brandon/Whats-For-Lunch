@@ -137,7 +137,7 @@ function pickRest() {
     });
     
     $('html,body').animate({
-    scrollTop: $("#choice-section").offset().top - 50
+    scrollTop: $("#choice-section").offset().top
     });
 }
 
