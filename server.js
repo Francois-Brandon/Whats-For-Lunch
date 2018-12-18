@@ -3,7 +3,6 @@ var app = express();
 
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var passport = require('passport');
 
 const favoritesController = require("./controllers/favoritesController");
 const restaurantsController = require("./controllers/restaurantsController");
@@ -21,8 +20,7 @@ app.use(session({
   saveUninitialized: false,
   //cookie: { secure: true }
 }));
-app.use(passport.initialize());
-app.user(passport.session());
+
 
 app.get('/restaurants', restaurantsController.getRestaurants);
 app.get('/restaurant', restaurantsController.getRestaurant);
