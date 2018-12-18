@@ -4,6 +4,10 @@ var app = express();
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 const favoritesController = require("./controllers/favoritesController");
 const restaurantsController = require("./controllers/restaurantsController");
 const userController = require("./controllers/userController");
