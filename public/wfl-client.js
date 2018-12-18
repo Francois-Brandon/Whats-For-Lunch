@@ -59,9 +59,11 @@ function login() {
         if (result.success === true 
            && result.username != null 
            && result.uuid != null) {
-            window.location.href = 'index.html';
+            //window.location.href = 'index.html';
+            console.log("Login is successful");
         } else {
             $('#login-error').html('Login failed.');
+            console.log("Login failed");
         }
     });
 }
