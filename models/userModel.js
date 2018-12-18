@@ -51,11 +51,12 @@ function verifyPassword(username, password, callback) {
 			callback(err, null);
 		}
         console.log("No error in query. Moving on to compare password with hash.");
-        console.log("Query results: " + result);
+        console.log("Query results: " + JSON.stringify(result.rows));
         console.log("Password results: " + result.password);
-        bcrypt.compare(password, result.password, function(err, res) {
+        bcrypt.compare(password, result.rows[0].password, function(err, res) {
             if (err) {
                 console.log("There was an error with the bcrypt compare");
+                console.log("Error with bcrypt compare: " + err);
                 callback(err)
                 
             } else {
