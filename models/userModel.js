@@ -17,18 +17,9 @@ function addUserToDb(username, password, email, callback) {
 			console.log("Error in query: " + sql)
 			console.log(err);
 			callback(err, null);
-		}
-        console.log(result.password);
-        bcrypt.compare(result.password, hash, function(err, res) {
-            if (err) {
-                callback(err)
-            } else {
-            
-		      result = "User: " + username + " has been created";
-		      callback(null, result);
-            }
-
-        });
+		} else {
+            callback(null, {success: true});
+        }
 
 		
 	});
