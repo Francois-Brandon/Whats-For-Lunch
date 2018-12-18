@@ -5,12 +5,12 @@ const pool = new Pool({connectionString: connectionString});
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-function addUserToDb(username, password, callback) {
+function addUserToDb(username, password, email, callback) {
     var hash = bcrypt.hashSync(password, saltRounds);
     
-    var sql = "INSERT INTO login (username, password) VALUES ($1, $2)";
+    var sql = "INSERT INTO login (username, password, email) VALUES ($1, $2, $3)";
     
-    var params = [username, hash];
+    var params = [username, hash, email];
     
     pool.query(sql, params, function(err, result) {
 		if (err) {
@@ -22,14 +22,15 @@ function addUserToDb(username, password, callback) {
         bcrypt.compare(result.password, hash, function(err, res) {
             if (err) {
                 callback(err)
-            }
+            } else {
             
-		    next();
+		      result = "User: " + username + " has been created";
+		      callback(null, result);
+            }
 
         });
 
-		result = "User: " + username + " has been created";
-		callback(null, result);
+		
 	});
     
     

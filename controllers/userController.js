@@ -4,11 +4,13 @@ const userModel = require("../models/userModel.js");
 function createUser(request, response) {
     var username = request.body.username;
     var password = request.body.password;
+    var email = request.body.email;
     
     console.log("This is the username: " + username);
     console.log("This is the password: " + password);
+    console.log("This is the email: " + email);
     
-    userModel.addUserToDb(username, password, function(error, result) {
+    userModel.addUserToDb(username, password, email, function(error, result) {
         if (error) {
             response.status(400).json({success: false, data: error});
         } else {
@@ -27,8 +29,10 @@ function handleLogin(request, response) {
             response.status(401).json({success: false, data: error});
         } else {
             console.log("BACK TO HANDLELOGIN");
-            request.session.user = username;
-            response.status(200).json({success: true, data: result});
+            request.session.id = result.rows[0].id;
+            request.session.username = username;
+            console.log("UUID: " + request.session.id);
+            response.status(200).json({success: true, username: username, uuid: result.rows[0].id});
         }
         
     });
