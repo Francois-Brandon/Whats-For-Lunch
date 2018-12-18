@@ -53,7 +53,7 @@ function verifyPassword(username, password, callback) {
                 callback(err)
             }
             
-            
+            next();
             // res == true
         });
 

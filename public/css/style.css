@@ -1492,6 +1492,10 @@ textarea.form-control {
   color: #fff;
 }
 
+.user-form {
+    
+}
+
 #loader {
   position: fixed;
   width: 96px;
@@ -1599,3 +1603,4 @@ textarea.form-control {
     stroke-dashoffset: -136px;
   }
 }
+

@@ -1,6 +1,10 @@
 const express = require('express');
 var app = express();
 
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var passport = require('passport');
+
 const favoritesController = require("./controllers/favoritesController");
 const restaurantsController = require("./controllers/restaurantsController");
 const userController = require("./controllers/userController");
@@ -11,6 +15,14 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(session({
+  secret: 'bviasijvjamonipowecjeer',
+  resave: false,
+  saveUninitialized: false,
+  //cookie: { secure: true }
+}));
+app.use(passport.initialize());
+app.user(passport.session());
 
 app.get('/restaurants', restaurantsController.getRestaurants);
 app.get('/restaurant', restaurantsController.getRestaurant);
