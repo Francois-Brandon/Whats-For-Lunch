@@ -44,6 +44,8 @@ function restaurantSearch() {
 }
 
 function login() {
+    $('#login-error').html('');
+    
     var username = $("#username").val();
     var password = $("#password").val();
     
@@ -54,6 +56,13 @@ function login() {
     
     $.post("/login", params, function(result) {
         console.log(result);
+        if (result.success === true 
+           && result.username != null 
+           && result.uuid != null) {
+            window.location.href = 'index.html';
+        } else {
+            $('#login-error').html('Login failed.');
+        }
     });
 }
 
