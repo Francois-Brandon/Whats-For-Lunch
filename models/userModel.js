@@ -37,6 +37,9 @@ function addUserToDb(username, password, callback) {
 
 function verifyPassword(username, password, callback) {
     
+    console.log("In verifyPassword - Plaintext Password: " + password);
+    console.log("In verifyPassword - Username: " + username);
+    
     var sql = "SELECT * FROM login WHERE username = $1";
 
 	var params = [username];
@@ -47,17 +50,20 @@ function verifyPassword(username, password, callback) {
 			console.log(err);
 			callback(err, null);
 		}
-        console.log(result.password);
-        bcrypt.compare(result.password, hash, function(err, res) {
+        console.log("No error in query. Moving on to compare password with hash.");
+        console.log("Query results: " + result);
+        bcrypt.compare(password, result.password, function(err, res) {
             if (err) {
+                console.log("There was an error with the bcrypt compare");
                 callback(err)
+                
             }
-            
-            next();
+            console.log("There was NO error with the bcrypt compare")
+            //next();
             // res == true
         });
 
-		console.log("ARE WE GETTING PAST COMPARE?");
+		console.log("We are past compare about to execute callback");
 		callback(null, result);
 	});
      
