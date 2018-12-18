@@ -47,7 +47,7 @@ function verifyPassword(username, password, callback) {
 			console.log(err);
 			callback(err, null);
 		}
-        consloe.log(result.password);
+        console.log(result.password);
         bcrypt.compare(result.password, hash, function(err, res) {
             if (err) {
                 callback(err)
