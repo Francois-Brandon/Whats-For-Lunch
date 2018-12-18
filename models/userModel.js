@@ -57,14 +57,17 @@ function verifyPassword(username, password, callback) {
                 console.log("There was an error with the bcrypt compare");
                 callback(err)
                 
-            }
+            } else {
             console.log("There was NO error with the bcrypt compare")
             //next();
             // res == true
+                console.log("We are past compare about to execute callback");
+                callback(null, result);
+            }
         });
 
-		console.log("We are past compare about to execute callback");
-		callback(null, result);
+		
+		
 	});
      
 }
