@@ -1,5 +1,5 @@
 const userModel = require("../models/userModel.js");
-var session = require('express-session');
+//var session = require('express-session');
 
 function createUser(request, response) {
     var username = request.body.username;
