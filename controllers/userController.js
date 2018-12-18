@@ -26,6 +26,7 @@ function handleLogin(request, response) {
         if (error) {
             response.status(401).json({success: false, data: error});
         } else {
+            console.log("BACK TO HANDLELOGIN");
             request.session.user = username;
             response.status(200).json({success: true, data: result});
         }

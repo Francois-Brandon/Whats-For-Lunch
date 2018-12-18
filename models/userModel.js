@@ -57,7 +57,7 @@ function verifyPassword(username, password, callback) {
             // res == true
         });
 
-		//console.log("");
+		console.log("ARE WE GETTING PAST COMPARE?");
 		callback(null, result);
 	});
      
