@@ -23,6 +23,8 @@ function addFavoriteToDb(businessId, userId, callback) {
     var sql = "INSERT INTO favorites (user_id, restaurant_id) VALUES ($1::int, $2)";
 
 	var params = [userId, businessId];
+    
+    console.log("Assembling query with " + userId + " and " + businessId);
 
 	pool.query(sql, params, function(err, result) {
 		if (err) {

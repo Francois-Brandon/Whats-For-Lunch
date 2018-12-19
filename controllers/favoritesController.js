@@ -16,10 +16,15 @@ function addFavorite(req, res) {
     var businessId = req.body.businessId;
     var userId = request.session.id;
     
+    console.log("Business ID: " + businessId);
+    console.log("UUID: " + userId);
+    
     favoritesModel.addFavoriteToDb(businessId, userId, function(error, result) {
         if (error) {
+            console.log("There was an error inserting in DB");
             res.status(500).json({success: false, data: error});
 		} else {
+            console.log("Back after adding to DB");
             res.status(201).json({success: true, data: result});
 		}
     });

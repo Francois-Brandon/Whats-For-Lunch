@@ -62,7 +62,7 @@ function handleLogout(request, response) {
 function verifyLogin(request, response, next) {
 	if (request.session.id) {
 		// They are logged in!
-
+        console.log("Logged in. Moving on.")
 		// pass things along to the next function
 		next();
 	} else {
