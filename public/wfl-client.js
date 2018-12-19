@@ -83,11 +83,16 @@ function register() {
     var password2 = $("#password2").val();
     
     if (username == '') {
-        $('#register-error').html('Please enter a valid username');
+        $('#register-error').html('Username is required');
         return;
     }
     
-    if(isValidEmailAddress(email)) {
+    if (email == '') {
+        $('#register-error').html('Email is required');
+        return;
+    }
+    
+    if(!isValidEmailAddress(email)) {
         $('#register-error').html('Please enter a valid email');
         return;
     }
