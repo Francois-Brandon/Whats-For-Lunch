@@ -30,7 +30,7 @@ function handleLogin(request, response) {
         if (error) {
             response.status(401).json({success: false, data: error});
         }
-        if (result === 'false') {
+        if (result) {
             response.status(401).json({success: false, data: error});
         } else {
             console.log("BACK TO HANDLELOGIN");
