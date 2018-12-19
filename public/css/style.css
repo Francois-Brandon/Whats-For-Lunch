@@ -1492,7 +1492,7 @@ textarea.form-control {
   color: #fff;
 }
 
-.login-error .register-error {
+#login-error #register-error {
     color: red;
     font-weight: bold;
 }
