@@ -20,7 +20,7 @@ function getFavoritesFromDb(userId, callback) {
 }
 
 function addFavoriteToDb(businessId, userId, callback) {
-    var sql = "INSERT INTO favorites (user_id, restaurant_id) VALUES ($1::int, $2)";
+    var sql = "INSERT INTO favorites (user_id, restaurant_id) VALUES ($1, $2)";
 
 	var params = [userId, businessId];
     
@@ -40,7 +40,7 @@ function addFavoriteToDb(businessId, userId, callback) {
 }
 
 function removeFavoriteFromDb(favId, userId, callback) {
-    var sql = "DELETE FROM favorites WHERE id = $2::int AND user_id = $1::int";
+    var sql = "DELETE FROM favorites WHERE id = $2::int AND user_id = $1";
 
 	var params = [userId, favId];
 
