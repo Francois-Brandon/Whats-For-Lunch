@@ -29,6 +29,9 @@ function handleLogin(request, response) {
         console.log("Result: " + result);
         if (error) {
             response.status(401).json({success: false, data: error});
+        }
+        if (result === 'false') {
+            response.status(401).json({success: false, data: error});
         } else {
             console.log("BACK TO HANDLELOGIN");
             request.session.id = result.rows[0].id;
