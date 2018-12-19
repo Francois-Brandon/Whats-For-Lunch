@@ -1,3 +1,8 @@
+$(function(){
+
+  // jQuery methods go here...
+
+});
 
 var criteria = [];
 var restPool = [];
@@ -201,9 +206,9 @@ function addToFavorites(businessId) {
             });
         } else {
             $.toast({
-                text: "Unable to add to favorites", // Text that is to be shown in the toast
+                text: result.message, // Text that is to be shown in the toast
 
-                icon: 'success', // Type of toast icon
+                icon: 'error', // Type of toast icon
                 showHideTransition: 'fade', // fade, slide or plain
                 allowToastClose: true, // Boolean value true or false
                 hideAfter: 3000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden

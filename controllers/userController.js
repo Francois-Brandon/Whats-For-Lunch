@@ -60,7 +60,7 @@ function handleLogout(request, response) {
 }
 
 function verifyLogin(request, response, next) {
-	if (request.session.user) {
+	if (request.session.id) {
 		// They are logged in!
 
 		// pass things along to the next function
@@ -68,8 +68,8 @@ function verifyLogin(request, response, next) {
 	} else {
 		// They are not logged in
 		// Send back an unauthorized status
-		var result = {succes:false, message: "Access Denied"};
-		response.status(401).json(result);
+		var result = {succes:false, message: "Login to add to favorites"};
+		response.status(200).json(result);
 	}
 }
 
