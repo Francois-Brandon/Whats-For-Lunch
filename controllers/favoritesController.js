@@ -14,7 +14,7 @@ function getFavorites(req, res) {
 
 function addFavorite(req, res) {
     var businessId = req.body.businessId;
-    var userId = request.session.id;
+    var userId = req.session.id;
     
     console.log("Business ID: " + businessId);
     console.log("UUID: " + userId);
