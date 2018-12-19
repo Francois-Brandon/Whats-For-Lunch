@@ -34,8 +34,10 @@ function restaurantSearch() {
         var resultsBody = '<div class="row"><div class="ftco-46 results-display">';
         
         for (var i = 0; i < 6; i++) {
-            resultsBody += '<div class="ftco-46-row d-flex flex-column flex-lg-row"><div class="ftco-46-image" style="background-image: url(' + data.businesses[i].image_url + ');"></div><div class="ftco-46-text ftco-46-arrow-left"><div id="' + data.businesses[i].id + '" class="rest-option" onclick="addToPool(\'' + data.businesses[i].id + '\')"><h3 class="ftco-46-heading">' + data.businesses[i].name + '</h3><p class="mb-5">' + data.businesses[i].location.address1 + '<br>'  + data.businesses[i].location.address2 + '<br>' + data.businesses[i].location.city + ', ' + data.businesses[i].location.state + ' ' + data.businesses[i].location.zip_code + '</p></div><p class="btn-link" onclick="addToFavorites(\'' + data.businesses[i].id + '\')">Add to favorites <span class="ion-heart"></span></p><p><a href="' + data.businesses[i].url + '" class="btn-link" target="_blank">See on Yelp <span class="ion-android-arrow-forward"></span></a></p></div></div>';
+            resultsBody += '<div class="ftco-46-row d-flex flex-column flex-lg-row"><div class="ftco-46-image" style="background-image: url(' + data.businesses[i].image_url + ');"></div><div class="ftco-46-text ftco-46-arrow-left"><div id="' + data.businesses[i].id + '" class="rest-option" onclick="addToPool(\'' + data.businesses[i].id + '\')"><h3 class="ftco-46-heading">' + data.businesses[i].name + '</h3><p class="mb-5">' + data.businesses[i].location.address1 + '<br>'  + data.businesses[i].location.address2 + '<br>' + data.businesses[i].location.city + ', ' + data.businesses[i].location.state + ' ' + data.businesses[i].location.zip_code + '</p></div><p><a href="' + data.businesses[i].url + '" class="btn-link" target="_blank">See on Yelp <span class="ion-android-arrow-forward"></span></a></p></div></div>';
         }
+        //Removed link to add to favorites until feature can be fully implemented
+        //<p class="btn-link" onclick="addToFavorites(\'' + data.businesses[i].id + '\')">Add to favorites <span class="ion-heart"></span></p>
         
         resultsBody += '</div></div>';
         
