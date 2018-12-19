@@ -341,10 +341,6 @@ textarea.form-control {
   top: -10px !important;
 }
 
-.site-nav-toggle i, .site-nav-toggle i:before, .site-nav-toggle i:after {
-  background: #FFF !important;
-}
-
 .btn {
   text-transform: uppercase;
   letter-spacing: .2em;
@@ -1492,7 +1488,7 @@ textarea.form-control {
   color: #fff;
 }
 
-#login-error #register-error {
+#login-error, #register-error {
     color: red;
     font-weight: bold;
 }

@@ -29,7 +29,7 @@ app.use(session({
 app.get('/restaurants', restaurantsController.getRestaurants);
 app.get('/restaurant', restaurantsController.getRestaurant);
 app.get('/favorites', favoritesController.getFavorites);
-app.post('/favorites/add', favoritesController.addFavorite);
+app.post('/favorites/add', userController.verifyLogin, favoritesController.addFavorite);
 app.post('/favorites/delete', favoritesController.deleteFavorite);
 app.post('/login', userController.handleLogin);
 app.post('/logout', userController.handleLogout);
