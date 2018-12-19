@@ -1492,8 +1492,9 @@ textarea.form-control {
   color: #fff;
 }
 
-.user-form {
-    
+.login-error {
+    color: red;
+    font-weight: bold;
 }
 
 #loader {

@@ -13,6 +13,8 @@ function createUser(request, response) {
     userModel.addUserToDb(username, password, email, function(error, result) {
         if (error) {
             response.status(400).json({success: false, data: error});
+        } if (result == false) {
+            response.status(200).json({success: false, data: result});
         } else {
             response.status(201).json({success: true, data: result});
         }

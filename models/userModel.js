@@ -22,9 +22,7 @@ function addUserToDb(username, password, email, callback) {
         }
 
 		
-	});
-    
-    
+	});  
 }
 
 function verifyPassword(username, password, callback) {
