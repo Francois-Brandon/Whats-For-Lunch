@@ -51,8 +51,8 @@ function verifyPassword(username, password, callback) {
                 console.log("Error with bcrypt compare: " + err);
                 callback(err)
                 
-            } else if (!res) {
-                console.log("Authentication failed: ");
+            } else if (res == 'false') {
+                console.log("Authentication failed");
                 callback(res)
             } else {
                 console.log("There was NO error with the bcrypt compare: " + res);
