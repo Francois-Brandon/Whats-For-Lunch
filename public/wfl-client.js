@@ -107,6 +107,12 @@ function register() {
         return;
     }
     
+    var params = {
+		username: username,
+		password: password,
+        email: email
+	};
+    
     $.post("/user", params, function(result) {
         console.log(result);
         if (result.success === true) {
