@@ -25,6 +25,8 @@ function handleLogin(request, response) {
     var password = request.body.password;
     
     userModel.verifyPassword(username, password, function(error, result) {
+        console.log("Error: " + error);
+        console.log("Result: " + result);
         if (error) {
             response.status(401).json({success: false, data: error});
         } else {
